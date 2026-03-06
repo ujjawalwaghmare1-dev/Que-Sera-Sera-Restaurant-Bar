@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Que Sera Sera | Restaurant & Bar Andheri West</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Red & White Theme - Simple & Clean */
+    :root {
+      --primary-red: #d32f2f;
+      --dark-red: #b71c1c;
+      --light-red: #ffcdd2;
+      --text-dark: #212121;
+      --text-light: #757575;
+      --bg-light: #f5f5f5;
+      --border-color: #e0e0e0;
+    }
+
+    /* Header - Without Logo */
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .resto-name h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-red);
+      line-height: 1.2;
+    }
+
+    .resto-name span {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      letter-spacing: 1px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-red);
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--primary-red);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--dark-red);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--primary-red);
+      color: var(--primary-red);
+    }
+
+    .btn-outline:hover {
+      background: var(--light-red);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0;
+      background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-text h2 span {
+      color: var(--primary-red);
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      height: 400px;
+      background: url('https://lh3.googleusercontent.com/gps-cs-s/AHVAweqHXMoUNmWzp5hXwfJrby2HFvkE-oMVUKWTgO-NCTe0PIahUcGPjY698Lak8FP7kCkU08zfKZjywPgMUpDD3--61HCthYENOn41md5D0G_jxjsZVuLagroQpczYRyPIUnh-bHPOlgvqIpPl=s680-w680-h510-rw') center/cover no-repeat;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 50px 0 30px;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary-red);
+    }
+
+    /* Signature Dishes Grid */
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .dish-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+
+    .dish-card:hover {
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .dish-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .dish-info {
+      padding: 20px;
+    }
+
+    .dish-info h4 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 30px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-wa:hover {
+      background: #128C7E;
+    }
+
+    /* Menu Categories */
+    .menu-category {
+      margin: 40px 0;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .menu-category h3 {
+      font-size: 1.8rem;
+      color: var(--primary-red);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--light-red);
+    }
+
+    .menu-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .menu-table tr {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .menu-table td {
+      padding: 15px 10px 15px 0;
+    }
+
+    .menu-item {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .menu-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .menu-price {
+      font-weight: 600;
+      color: var(--primary-red);
+      white-space: nowrap;
+    }
+
+    .menu-order-btn {
+      background: var(--primary-red);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 15px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .menu-order-btn i {
+      font-size: 0.9rem;
+    }
+
+    /* Instagram Reels */
+    .reel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .reel-item {
+      aspect-ratio: 9/16;
+      background: var(--bg-light);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .reel-item iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Inquiry Form */
+    .inquiry-form {
+      background: var(--bg-light);
+      padding: 40px;
+      border-radius: 20px;
+      margin: 50px 0;
+    }
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      flex: 1 1 300px;
+      padding: 15px 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-group textarea {
+      min-width: 100%;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      background: var(--bg-light);
+      padding: 40px;
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+
+    .contact-item h4 {
+      color: var(--primary-red);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .contact-item p {
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .contact-item a {
+      color: var(--primary-red);
+      text-decoration: none;
+    }
+
+    .hours {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 99;
+    }
+
+    .float-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-red);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .float-btn.whatsapp {
+      background: #25D366;
+    }
+
+    .float-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 40px 0;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-red);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero-text h2 {
+        font-size: 2.2rem;
+      }
+      
+      .reel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resto-name h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <a href="tel:07700004311" class="float-btn" title="Call Now"><i class="fas fa-phone"></i></a>
+  <a href="#" class="float-btn whatsapp" title="WhatsApp" id="floatWA"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.instagram.com/queseraseramumbai/" target="_blank" class="float-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="#reservations" class="float-btn" title="Reserve"><i class="fas fa-calendar-check"></i></a>
+</div>
+
+<!-- Header - Without Logo -->
+<div class="header">
+  <div class="container">
+    <div class="navbar">
+      <div class="resto-name">
+        <h1>QUE SERA SERA</h1>
+        <span>FINE DINING • COCKTAILS • LOUNGE</span>
+      </div>
+      
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#full-menu">Menu</a>
+        <a href="#signature">Signature</a>
+        <a href="#reservations">Reservations</a>
+        <a href="#contact">Contact</a>
+      </div>
+      
+      <div class="action-btns">
+        <a href="tel:07700004311" class="btn btn-outline"><i class="fas fa-phone"></i> Call</a>
+        <a href="#" class="btn btn-primary" id="reserveBtn"><i class="fas fa-calendar-alt"></i> Reserve</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2>Experience <span>Fine Dining</span> in Andheri West</h2>
+        <p>A perfect place for great food, cocktails and unforgettable evenings.</p>
+        <div class="hero-buttons">
+          <a href="#reservations" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Reserve Table</a>
+          <a href="https://www.instagram.com/queseraseramumbai/" target="_blank" class="btn btn-outline"><i class="fab fa-instagram"></i> Follow Us</a>
+          <a href="#full-menu" class="btn btn-outline"><i class="fas fa-shopping-cart"></i> Order Now</a>
+        </div>
+      </div>
+      <div class="hero-image"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Signature Dishes -->
+<div class="container" id="signature">
+  <h2 class="section-title">Signature Dishes</h2>
+  <div class="dish-grid">
+    <div class="dish-card">
+      <div class="dish-img" style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AHVAweomI-nUCeCdQiND_IypLb2GxTYokU-AK_LHHmYswMHwzCj4I_0tB-trRJ1Nvrg4h_tKDhQOSIGBaTP0GKM55CjBO7mQZ_Y6RF_PP5J-qptCQ5YkfwxTN3ZMZaw56nPi5TjAhqdY7w=w141-h236-n-k-no-nu');"></div>
+      <div class="dish-info">
+        <h4>Tiramisu with Coffee Ice Cream</h4>
+        <button class="btn-wa" onclick="orderWhatsApp('Tiramisu with Coffee Ice Cream')"><i class="fab fa-whatsapp"></i> Order Now</button>
+      </div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-img" style="background-image: url('https://lh3.googleusercontent.com/proxy/v69CTG_l8gfXxmpKuKWbDQgjId7GGisgmXud6oEdYQaOv22ADDpK8-8GdQjKfZY386_uma2eFdErhkRoMk1Xgw8oQdvfHFd94h9qj0E37Nv4YstH_aWtADEeLOWBNBvBoZP54zyaRKEKVOpvtDq9_dPFRHRNIoM=s680-w680-h510-rw');"></div>
+      <div class="dish-info">
+        <h4>Nutella Cheesecake</h4>
+        <button class="btn-wa" onclick="orderWhatsApp('Nutella Cheesecake')"><i class="fab fa-whatsapp"></i> Order Now</button>
+      </div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-img" style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AHVAweqHXMoUNmWzp5hXwfJrby2HFvkE-oMVUKWTgO-NCTe0PIahUcGPjY698Lak8FP7kCkU08zfKZjywPgMUpDD3--61HCthYENOn41md5D0G_jxjsZVuLagroQpczYRyPIUnh-bHPOlgvqIpPl=s680-w680-h510-rw');"></div>
+      <div class="dish-info">
+        <h4>Garlic Butter Prawns</h4>
+        <button class="btn-wa" onclick="orderWhatsApp('Garlic Butter Prawns')"><i class="fab fa-whatsapp"></i> Order Now</button>
+      </div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-img" style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AHVAweomI-nUCeCdQiND_IypLb2GxTYokU-AK_LHHmYswMHwzCj4I_0tB-trRJ1Nvrg4h_tKDhQOSIGBaTP0GKM55CjBO7mQZ_Y6RF_PP5J-qptCQ5YkfwxTN3ZMZaw56nPi5TjAhqdY7w=w141-h236-n-k-no-nu');"></div>
+      <div class="dish-info">
+        <h4>Balsamic Pork Belly</h4>
+        <button class="btn-wa" onclick="orderWhatsApp('Balsamic Pork Belly')"><i class="fab fa-whatsapp"></i> Order Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instagram Reels -->
+<div class="container">
+  <h2 class="section-title">Instagram Reels</h2>
+  <div class="reel-grid">
+    <div class="reel-item"><iframe src="https://www.instagram.com/queseraseramumbai/reel/DUr1VS7CAxP/embed" frameborder="0"></iframe></div>
+    <div class="reel-item"><iframe src="https://www.instagram.com/queseraseramumbai/reel/DUqe6a4iLZE/embed" frameborder="0"></iframe></div>
+    <div class="reel-item"><iframe src="https://www.instagram.com/queseraseramumbai/reel/DSaMujkiGf_/embed" frameborder="0"></iframe></div>
+  </div>
+</div>
+
+<!-- Full Menu Section -->
+<div class="container" id="full-menu">
+  <h2 class="section-title">Our Menu</h2>
+  
+  <!-- Coffee Menu -->
+  <div class="menu-category">
+    <h3><i class="fas fa-coffee"></i> Coffee</h3>
+    <table class="menu-table">
+      <tr><td class="menu-item">Espresso</td><td class="menu-desc">[30 ml] Single shot, rich & full bodied</td><td class="menu-price">₹235</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Espresso')"><i class="fab fa-whatsapp"></i> Order</button></td></tr>
+      <tr><td class="menu-item">Doppio</td><td class="menu-desc">[55 ml] Double shot, stronger flavor</td><td class="menu-price">₹255</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Doppio')">Order</button></td></tr>
+      <tr><td class="menu-item">Americano</td><td class="menu-desc">[270 ml] Smooth espresso with hot water</td><td class="menu-price">₹255</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Americano')">Order</button></td></tr>
+      <tr><td class="menu-item">Mocha</td><td class="menu-desc">[270 ml] Espresso, chocolate, whipped cream</td><td class="menu-price">₹335</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Mocha')">Order</button></td></tr>
+      <tr><td class="menu-item">Cappuccino</td><td class="menu-desc">[270 ml] Classic Italian coffee</td><td class="menu-price">₹335</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Cappuccino')">Order</button></td></tr>
+      <tr><td class="menu-item">Flat White</td><td class="menu-desc">[270 ml] Velvety micro foamed milk</td><td class="menu-price">₹335</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Flat White')">Order</button></td></tr>
+      <tr><td class="menu-item">Cafe Latte</td><td class="menu-desc">[270 ml] Espresso, steamed milk, foam</td><td class="menu-price">₹335</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Cafe Latte')">Order</button></td></tr>
+      <tr><td class="menu-item">Iced Latte</td><td class="menu-desc">[270 ml] Chilled latte with ice</td><td class="menu-price">₹335</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Iced Latte')">Order</button></td></tr>
+      <tr><td class="menu-item">Cold Coffee</td><td class="menu-desc">[300 ml] Creamy, indulgent chilled coffee</td><td class="menu-price">₹425</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Cold Coffee')">Order</button></td></tr>
+    </table>
+  </div>
+  
+  <!-- Pizza Menu -->
+  <div class="menu-category">
+    <h3><i class="fas fa-pizza-slice"></i> Pizza (12 inch)</h3>
+    <table class="menu-table">
+      <tr><td class="menu-item">Margherita</td><td class="menu-desc">Fresh mozzarella, tomato sauce, basil</td><td class="menu-price">₹830</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Margherita Pizza')">Order</button></td></tr>
+      <tr><td class="menu-item">Paprika Cottage Cheese & Mushrooms</td><td class="menu-desc">Cottage cheese, mushrooms, spinach</td><td class="menu-price">₹900</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Paprika Cottage Cheese Pizza')">Order</button></td></tr>
+      <tr><td class="menu-item">Exotic Verde</td><td class="menu-desc">Veggie pizza with chilli coulis (spicy)</td><td class="menu-price">₹900</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Exotic Verde Pizza')">Order</button></td></tr>
+      <tr><td class="menu-item">Truffle Mushroom</td><td class="menu-desc">Assorted mushrooms, truffle, Parmesan</td><td class="menu-price">₹1090</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Truffle Mushroom Pizza')">Order</button></td></tr>
+      <tr><td class="menu-item">Smoked BBQ Chicken</td><td class="menu-desc">Pulled chicken, jalapenos, spicy mayo</td><td class="menu-price">₹940</td><td><button class="menu-order-btn" onclick="orderWhatsApp('BBQ Chicken Pizza')">Order</button></td></tr>
+      <tr><td class="menu-item">Ranch Chicken</td><td class="menu-desc">Fajita chicken, caramelized onion</td><td class="menu-price">₹940</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Ranch Chicken Pizza')">Order</button></td></tr>
+      <tr><td class="menu-item">Spicy Pepperoni</td><td class="menu-desc">Jalapenos, crispy garlic, mozzarella</td><td class="menu-price">₹1050</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Spicy Pepperoni Pizza')">Order</button></td></tr>
+      <tr><td class="menu-item">Double Pepperoni</td><td class="menu-desc">Extra pepperoni, bold savory taste</td><td class="menu-price">₹1255</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Double Pepperoni Pizza')">Order</button></td></tr>
+    </table>
+  </div>
+  
+  <!-- Pasta Menu -->
+  <div class="menu-category">
+    <h3><i class="fas fa-utensils"></i> Pasta</h3>
+    <table class="menu-table">
+      <tr><td class="menu-item">Mac & Cheese</td><td class="menu-desc">[225g] Classic creamy cheese sauce</td><td class="menu-price">₹675</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Mac & Cheese Pasta')">Order</button></td></tr>
+      <tr><td class="menu-item">Spaghetti Aglio Olio</td><td class="menu-desc">[225g] Garlic, olive oil, garden veggies</td><td class="menu-price">₹685</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Spaghetti Aglio Olio')">Order</button></td></tr>
+      <tr><td class="menu-item">Truffle Spaghetti</td><td class="menu-desc">[225g] Truffle cream, mascarpone</td><td class="menu-price">₹1095</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Truffle Spaghetti')">Order</button></td></tr>
+      <tr><td class="menu-item">Penne Alfredo</td><td class="menu-desc">[225g] Bell peppers, mushrooms, broccoli</td><td class="menu-price">₹740</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Penne Alfredo')">Order</button></td></tr>
+      <tr><td class="menu-item">Penne Arrabbiata</td><td class="menu-desc">[225g] Spicy, onion, zucchini (spicy)</td><td class="menu-price">₹740</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Penne Arrabbiata')">Order</button></td></tr>
+      <tr><td class="menu-item">Chicken Spaghetti Aglio Olio</td><td class="menu-desc">[225g] With chicken, garden veggies</td><td class="menu-price">₹740</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Chicken Aglio Olio')">Order</button></td></tr>
+    </table>
+  </div>
+  
+  <!-- Desserts -->
+  <div class="menu-category">
+    <h3><i class="fas fa-cake"></i> Desserts</h3>
+    <table class="menu-table">
+      <tr><td class="menu-item">Chocolate Brownie</td><td class="menu-desc">[150g] Eggless, rich fudgy brownie</td><td class="menu-price">₹525</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Chocolate Brownie')">Order</button></td></tr>
+      <tr><td class="menu-item">San Sebastian Cheesecake</td><td class="menu-desc">[150g] Creamy with caramel toffee sauce</td><td class="menu-price">₹630</td><td><button class="menu-order-btn" onclick="orderWhatsApp('San Sebastian Cheesecake')">Order</button></td></tr>
+      <tr><td class="menu-item">Tres Leches</td><td class="menu-desc">[150g] Moist red velvet dessert</td><td class="menu-price">₹645</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Tres Leches')">Order</button></td></tr>
+      <tr><td class="menu-item">Strawberry Cheesecake</td><td class="menu-desc">[160g] Creamy, refreshing strawberry</td><td class="menu-price">₹655</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Strawberry Cheesecake')">Order</button></td></tr>
+    </table>
+  </div>
+  
+  <!-- Drinks -->
+  <div class="menu-category">
+    <h3><i class="fas fa-glass-cheers"></i> Beverages</h3>
+    <table class="menu-table">
+      <tr><td class="menu-item">Fresh Lime Water</td><td class="menu-desc">[300ml] Classic zesty refreshment</td><td class="menu-price">₹275</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Fresh Lime Water')">Order</button></td></tr>
+      <tr><td class="menu-item">Peach Ice Tea</td><td class="menu-desc">[300ml] Brewed tea with ripe peaches</td><td class="menu-price">₹275</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Peach Ice Tea')">Order</button></td></tr>
+      <tr><td class="menu-item">Red Bull</td><td class="menu-desc">[300ml] Energizing drink</td><td class="menu-price">₹225</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Red Bull')">Order</button></td></tr>
+      <tr><td class="menu-item">Coke / Sprite / Diet Coke</td><td class="menu-desc">[300ml] Classic soft drinks</td><td class="menu-price">₹150</td><td><button class="menu-order-btn" onclick="orderWhatsApp('Soft Drink')">Order</button></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- WhatsApp Inquiry Form -->
+<div class="container">
+  <div class="inquiry-form">
+    <h3 style="font-size: 1.8rem; color: var(--primary-red);">Send us a message</h3>
+    <p style="color: var(--text-light); margin-bottom: 20px;">Have a question or special request? Message us directly on WhatsApp.</p>
+    <div class="form-group">
+      <input type="text" placeholder="Your name" id="inquiryName">
+      <textarea rows="2" placeholder="Your message..." id="inquiryMsg"></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="sendInquiry()" style="padding: 12px 35px;"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+  </div>
+</div>
+
+<!-- Contact & Reservations -->
+<div class="container" id="reservations">
+  <div class="contact-grid">
+    <div class="contact-item">
+      <h4><i class="fas fa-map-marker-alt"></i> Address</h4>
+      <p>Clifton Trishool Housing Society</p>
+      <p>Vastu Lane, Shastri Nagar</p>
+      <p>Andheri Lokhandwala, Andheri West</p>
+      <p>Mumbai - 400053</p>
+    </div>
+    
+    <div class="contact-item">
+      <h4><i class="fas fa-clock"></i> Opening Hours</h4>
+      <p class="hours">Open Daily</p>
+      <p>12:00 PM - 1:00 AM</p>
+    </div>
+    
+    <div class="contact-item">
+      <h4><i class="fas fa-phone"></i> Contact</h4>
+      <p><a href="tel:07700004311">07700004311</a></p>
+      <p><a href="https://www.instagram.com/queseraseramumbai/" target="_blank">@queseraseramumbai</a></p>
+    </div>
+    
+    <div class="contact-item">
+      <h4><i class="fas fa-calendar-check"></i> Reservations</h4>
+      <p><a href="https://www.zomato.com/mumbai/que-sera-sera-andheri-lokhandwala/book" target="_blank">Zomato</a></p>
+      <p><a href="https://www.swiggy.com/restaurants/que-sera-sera-andheri-lokhandwala-andheri-west-mumbai-773738/dineout" target="_blank">Swiggy Dineout</a></p>
+      <p><a href="#">EazyDiner</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <span>© 2024 Que Sera Sera Restaurant & Bar. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/queseraseramumbai/">Instagram</a>
+        <a href="https://www.facebook.com/queseraseramumbai">Facebook</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const whatsappNumber = "917700004311"; // Replace with actual number
+
+  function orderWhatsApp(item) {
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi, I would like to order: ' + item)}`, '_blank');
+  }
+
+  function sendInquiry() {
+    const name = document.getElementById('inquiryName').value || 'Guest';
+    const msg = document.getElementById('inquiryMsg').value || 'I have a question';
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hello, my name is ${name}. ${msg}`)}`, '_blank');
+  }
+
+  document.getElementById('reserveBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.open('https://www.zomato.com/mumbai/que-sera-sera-andheri-lokhandwala/book', '_blank');
+  });
+</script>
+
+</body>
+</html>
